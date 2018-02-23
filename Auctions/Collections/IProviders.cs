@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Auctions.Entities;
 
-namespace Auctions
+namespace Auctions.Collections
 {
     public interface IProviders
     {

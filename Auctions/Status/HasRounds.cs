@@ -1,6 +1,9 @@
 ﻿using System;
+using Auctions.Collections;
+using Auctions.Domain;
+using Auctions.Entities;
 
-namespace Auctions
+namespace Auctions.Status
 {
     public class HasRounds : RoundPattern
     {

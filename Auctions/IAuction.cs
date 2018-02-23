@@ -1,4 +1,8 @@
-﻿namespace Auctions
+﻿using Auctions.Collections;
+using Auctions.Entities;
+using Auctions.Status;
+
+namespace Auctions
 {
     public interface IAuction : IHasRound
     {

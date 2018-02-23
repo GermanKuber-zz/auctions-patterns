@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Auctions.Domain;
+using Microsoft.EntityFrameworkCore;
 
-namespace Auctions
+namespace Auctions.Context
 {
     public class ContextDb : DbContext
     {

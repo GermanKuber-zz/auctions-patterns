@@ -1,4 +1,4 @@
-﻿namespace Auctions
+﻿namespace Auctions.Status
 {
     public interface IStatus
     {

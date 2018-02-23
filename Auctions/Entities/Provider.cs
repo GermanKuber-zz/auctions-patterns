@@ -1,4 +1,4 @@
-﻿namespace Auctions
+﻿namespace Auctions.Entities
 {
     public class Provider
     {

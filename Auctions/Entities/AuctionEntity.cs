@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Auctions.Domain;
 
-namespace Auctions
+namespace Auctions.Entities
 {
     public class AuctionEntity
     {

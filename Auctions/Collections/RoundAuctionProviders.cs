@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Auctions.Domain;
+using Auctions.Entities;
 
-namespace Auctions
+namespace Auctions.Collections
 {
     public class RoundAuctionProviders : IProviders
     {

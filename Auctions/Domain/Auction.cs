@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Auctions.Collections;
+using Auctions.Entities;
+using Auctions.Status;
 
-namespace Auctions
+namespace Auctions.Domain
 {
     [NotMapped]
     public class Auction : AuctionEntity, IAuction

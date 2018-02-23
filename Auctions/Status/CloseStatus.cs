@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Auctions
+namespace Auctions.Status
 {
     public class CloseStatus : IStatus
     {

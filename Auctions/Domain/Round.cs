@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Auctions.Collections;
+using Auctions.Entities;
 
-namespace Auctions
+namespace Auctions.Domain
 {
     public class Round : RoundEntity,IPreviousRound
     {
