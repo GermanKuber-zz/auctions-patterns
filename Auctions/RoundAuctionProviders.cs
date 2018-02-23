@@ -35,9 +35,6 @@ namespace Auctions
             _providers.AddRange(providers);
 
         }
-
-
-
         public IEnumerable<Provider> All() => _providers.ToList();
 
    

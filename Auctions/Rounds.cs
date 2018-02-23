@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Auctions
 {
@@ -11,9 +12,11 @@ namespace Auctions
             _rounds = rounds;
         }
 
-        public void Add(Auction auction, AuctionProviders providers)
-        {
-            _rounds.Add(new Round(auction, providers));
-        }
+        public void Add(Auction auction, AuctionProviders providers) =>
+            _rounds.Add(new Round(auction,auction.Providers, providers));
+
+
+        public IEnumerable<Round> All() =>
+            _rounds.ToList();
     }
 }

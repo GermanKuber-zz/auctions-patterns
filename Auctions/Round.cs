@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Auctions
 {
-    public class Round : RoundEntity
+    public class Round : RoundEntity,IPreviousRound
     {
         [NotMapped] private RoundAuctionProviders _providers;
 
@@ -19,11 +19,21 @@ namespace Auctions
             }
         }
 
-        public Round(Auction auction, AuctionProviders providers)
+        public Round(Auction auction, IProviders providers,AuctionProviders providersToAdd)
         {
             Auction = auction;
 
-            Providers.Add(providers.All());
+            Providers.Add(providersToAdd.All());
         }
+    }
+
+    public interface IPreviousRound
+    {
+        RoundAuctionProviders Providers { get; }
+    }
+
+    public class VoidPreviousRound : IPreviousRound
+    {
+        public RoundAuctionProviders Providers { get; }
     }
 }
