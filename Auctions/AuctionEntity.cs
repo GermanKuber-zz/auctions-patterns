@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleApp2
+namespace Auctions
 {
     public class AuctionEntity
     {

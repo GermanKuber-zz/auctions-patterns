@@ -8,8 +8,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Auctions.Migrations
 {
     [DbContext(typeof(ContextDb))]
-    [Migration("20180223172710_Rounds")]
-    partial class Rounds
+    [Migration("20180223193533_Added_Auctions_Patterns")]
+    partial class Added_Auctions_Patterns
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,8 @@ namespace Auctions.Migrations
 
                     b.Property<int>("Status");
 
+                    b.Property<string>("Title");
+
                     b.HasKey("Id");
 
                     b.ToTable("Auctions");
@@ -37,9 +39,13 @@ namespace Auctions.Migrations
 
                     b.Property<int?>("AuctionId");
 
+                    b.Property<int?>("RoundId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AuctionId");
+
+                    b.HasIndex("RoundId");
 
                     b.ToTable("Provider");
                 });
@@ -63,6 +69,10 @@ namespace Auctions.Migrations
                     b.HasOne("ConsoleApp2.Auction")
                         .WithMany("ProvidersC")
                         .HasForeignKey("AuctionId");
+
+                    b.HasOne("ConsoleApp2.Round")
+                        .WithMany("Providers")
+                        .HasForeignKey("RoundId");
                 });
 
             modelBuilder.Entity("ConsoleApp2.Round", b =>

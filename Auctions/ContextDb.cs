@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ConsoleApp2
+namespace Auctions
 {
     public class ContextDb : DbContext
     {

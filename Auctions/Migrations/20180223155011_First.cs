@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
 
-namespace ConsoleApp2.Migrations
+namespace Auctions.Migrations
 {
     public partial class First : Migration
     {

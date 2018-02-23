@@ -1,22 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp2
+namespace Auctions
 {
-    public class Round
+    public class Round : RoundEntity
     {
-        public List<Provider> Providers { get; }
-        public int Id { get; set; }
+        [NotMapped] private RoundAuctionProviders _providers;
 
-        public Round()
+        [NotMapped]
+        public RoundAuctionProviders Providers
         {
-            
+            get
+            {
+                if (ProvidersC == null)
+                    ProvidersC = new List<Provider>();
+                _providers = new RoundAuctionProviders(Auction, ProvidersC);
+                return _providers;
+            }
         }
 
-        public Round(Auction auction, IEnumerable<Provider> providers)
+        public Round(Auction auction, AuctionProviders providers)
         {
-           
+            Auction = auction;
+
+            Providers.Add(providers.All());
         }
-    } 
-    
-    
+    }
 }

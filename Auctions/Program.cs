@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleApp2
+namespace Auctions
 {
     class Program
     {
@@ -19,8 +19,10 @@ namespace ConsoleApp2
             var listOf = new List<Provider> {new Provider {Id = 1},new Provider {Id = 2}};
             var providers = new AuctionProviders(listOf);
             auctionFirst.AddProvider(listOf.First());
+            auctionFirst.AddProvider(listOf[1]);
 
-            auctionFirst.AddRound(providers);
+                auctionFirst.AddRound(providers);
+            
             
 //            IAcution auction = new Auction();
 //            auction.AuctionStatus = new OpenStatus();

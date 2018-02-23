@@ -1,6 +1,4 @@
-﻿using System.Data.Common;
-
-namespace ConsoleApp2
+﻿namespace Auctions
 {
     public class Provider
     {

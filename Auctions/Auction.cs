@@ -1,14 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsoleApp2
+namespace Auctions
 {
     [NotMapped]
     public class Auction : AuctionEntity, IAuction
     {
         [NotMapped] private IStatus _auctionStatus;
 
-        [NotMapped] public Rounds Rounds { get; }
+        [NotMapped] public Rounds _rounds;
+        [NotMapped] public Rounds Rounds { 
+            get
+            {
+                if (RoundsC == null)
+                    RoundsC = new List<Round>();
+                _rounds = new Rounds(RoundsC);
+                return _rounds;
+            }
+        }
         [NotMapped] private AuctionProviders _providers;
 
         [NotMapped]

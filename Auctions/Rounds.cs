@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ConsoleApp2
+namespace Auctions
 {
     public class Rounds
     {
@@ -13,7 +13,7 @@ namespace ConsoleApp2
 
         public void Add(Auction auction, AuctionProviders providers)
         {
-            _rounds.Add(new Round(auction,providers.All()));
+            _rounds.Add(new Round(auction, providers));
         }
     }
 }

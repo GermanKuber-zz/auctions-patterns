@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleApp2
+namespace Auctions
 {
-    public class AuctionProviders :IProviders
+    public class AuctionProviders : IProviders
     {
         private readonly List<Provider> _providers;
 
@@ -19,11 +19,12 @@ namespace ConsoleApp2
         public void Add(Provider provider) => _providers.Add(provider);
         public IEnumerable<Provider> All() => _providers.ToList();
 
-    }
+        public bool HasListOfProviders(IEnumerable<Provider> providers) =>
+            _providers.All(x => providers.Any(s => s.Id == x.Id));
 
-    public interface IProviders
-    {
-        void Add(Provider provider);
-        IEnumerable<Provider> All();
+        public void Add(IEnumerable<Provider> providers)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

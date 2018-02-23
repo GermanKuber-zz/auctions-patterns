@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp2
+﻿namespace Auctions
 {
     public interface IStatus
     {
