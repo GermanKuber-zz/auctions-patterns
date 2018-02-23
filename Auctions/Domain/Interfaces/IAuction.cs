@@ -2,7 +2,7 @@
 using Auctions.Entities;
 using Auctions.Status;
 
-namespace Auctions
+namespace Auctions.Domain.Interfaces
 {
     public interface IAuction : IHasRound
     {

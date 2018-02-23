@@ -1,7 +1,7 @@
 ﻿using System;
-using Auctions.Status;
+using Auctions.Domain;
 
-namespace Auctions
+namespace Auctions.Status
 {
     public class OpenStatus : IStatus
     {

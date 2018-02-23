@@ -1,4 +1,5 @@
 ﻿using System;
+using Auctions.Domain;
 
 namespace Auctions.Status
 {

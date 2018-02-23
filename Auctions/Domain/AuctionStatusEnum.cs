@@ -1,4 +1,4 @@
-﻿namespace Auctions
+﻿namespace Auctions.Domain
 {
     public enum AuctionStatusEnum
     {

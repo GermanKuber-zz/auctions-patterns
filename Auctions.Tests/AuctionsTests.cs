@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Auctions.Collections;
 using Auctions.Context;
+using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 using Xunit;
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Auctions.Collections;
+using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 using Auctions.Status;
 

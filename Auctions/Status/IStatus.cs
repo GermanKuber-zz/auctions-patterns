@@ -1,4 +1,6 @@
-﻿namespace Auctions.Status
+﻿using Auctions.Domain;
+
+namespace Auctions.Status
 {
     public interface IStatus
     {

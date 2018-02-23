@@ -1,6 +1,7 @@
 ﻿using System;
 using Auctions.Collections;
 using Auctions.Domain;
+using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 
 namespace Auctions.Status

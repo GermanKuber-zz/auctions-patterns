@@ -1,9 +1,8 @@
 ﻿using System;
 using Auctions.Collections;
-using Auctions.Domain;
 using Auctions.Entities;
 
-namespace Auctions
+namespace Auctions.Domain.Interfaces
 {
     public interface RoundPattern
     {
