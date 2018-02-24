@@ -7,10 +7,13 @@ namespace Auctions.Status
     {
         public AuctionStatusEnum Status { get; } = AuctionStatusEnum.Open;
 
+        public OpenStatus( )
+        {
+
+        }
         public void Do()
         {
             Console.WriteLine("Estoy Abierto");
-
         }
     }
 }

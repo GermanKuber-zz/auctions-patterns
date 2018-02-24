@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Auctions.Domain;
 using Auctions.Domain.Interfaces;
 
@@ -11,6 +12,7 @@ namespace Auctions.Entities
         public AuctionStatusEnum Status { get; protected set; }
         public List<Round> RoundsC { get; protected set; }
         public List<Provider> ProvidersC { get; protected set; }
+        public DateTime ClosedDateC { get; protected set; }
 
     }
 

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Auctions.Collections;
 using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 using Auctions.Status;
+using Optional;
 
 namespace Auctions.Domain
 {
@@ -20,7 +22,7 @@ namespace Auctions.Domain
             {
                 if (RoundsC == null)
                     RoundsC = new List<Round>();
-                _rounds = new Rounds(this,RoundsC);
+                _rounds = new Rounds(this, RoundsC);
                 return _rounds;
             }
         }
@@ -75,6 +77,27 @@ namespace Auctions.Domain
                         _roundPattern = new HasNotRounds(this);
                 }
                 return _roundPattern;
+            }
+        }
+
+        private Option<DateTime> _closedDate;
+        [NotMapped]
+        public Option<DateTime> ClosedDates
+        {
+            get
+            {
+
+                if (_closedDate == null)
+                    if (this.ClosedDateC == null)
+                        _closedDate = Option.None<DateTime>();
+                    else
+                        _closedDate = Option.Some<DateTime>(ClosedDateC);
+                return _closedDate;
+            }
+            private set
+            {
+                _closedDate = value;
+                ClosedDateC = value.ValueOr(DateTime.Now);
             }
         }
 

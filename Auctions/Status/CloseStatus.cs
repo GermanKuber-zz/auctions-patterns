@@ -7,6 +7,10 @@ namespace Auctions.Status
     {
         public AuctionStatusEnum Status { get; } = AuctionStatusEnum.Closed;
 
+        public CloseStatus()
+        {
+
+        }
         public void Do()
         {
             Console.WriteLine("Estoy cerrado");
