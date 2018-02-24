@@ -6,7 +6,13 @@ using Auctions.Entities;
 
 namespace Auctions.Collections
 {
-    public class Rounds
+    public interface IRounds {
+        void Add(Auction auction, AuctionProviders providers);
+        void AddProvider(Provider provider, ICheckWhatInviteStrategy checkWhatInviteStrategy, IInviteStrategy inviteStrategy);
+        ICollection<Round> All();
+        Round Last();
+    }
+    public class Rounds: IRounds
     {
         private readonly Auction _auction;
         private readonly List<Round> _rounds;

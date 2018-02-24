@@ -6,8 +6,9 @@ namespace Auctions.Collections
     public interface IProviders
     {
         void Add(Provider provider);
-        IEnumerable<Provider> All();
+        ICollection<Provider> All();
         bool HasListOfProviders(IEnumerable<Provider> providers);
         void Add(IEnumerable<Provider> providers);
+        int Count();
     }
 }

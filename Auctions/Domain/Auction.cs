@@ -12,9 +12,9 @@ namespace Auctions.Domain
     {
         [NotMapped] private IStatus _auctionStatus;
 
-        [NotMapped] public Rounds _rounds;
+        [NotMapped] public IRounds _rounds;
         [NotMapped]
-        public Rounds Rounds
+        public IRounds Rounds
         {
             get
             {

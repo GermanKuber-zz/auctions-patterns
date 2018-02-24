@@ -37,8 +37,8 @@ namespace Auctions.Collections
             _providers.AddRange(providers);
 
         }
-        public IEnumerable<Provider> All() => _providers.ToList();
+        public ICollection<Provider> All() => _providers.ToList();
 
-   
+        public int Count() => _providers.ToList().Count();
     }
 }

@@ -23,13 +23,13 @@ namespace Auctions.Tests
             _sut = AuctionFactory.Create();
             _completeListOfProvices = new List<Provider> { _provider1, _provider2, _provider3 };
             _providers = new AuctionProviders(_completeListOfProvices);
-            _sut.AddProvider(_provider1, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+            _sut.AddProvider(_provider1, new CheckWhatInviteStrategy(), new InviteProviderToSecondLastRoundStrategy());
 
         }
         [Fact]
         public void Should_Add_New_Round()
         {
-            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteProviderToSecondLastRoundStrategy());
 
             _sut.AddRound(_providers);
 
@@ -40,7 +40,7 @@ namespace Auctions.Tests
         public void Should_Add_New_Round_With_Two_Providers()
         {
             var providers = new AuctionProviders(new List<Provider> { _provider1, _provider2 });
-            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteProviderToSecondLastRoundStrategy());
 
             _sut.AddRound(providers);
 
@@ -51,7 +51,7 @@ namespace Auctions.Tests
         public void Should_Add_Other_Round_More()
         {
 
-            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteProviderToSecondLastRoundStrategy());
 
             _sut.AddRound(_providers);
 
@@ -62,7 +62,7 @@ namespace Auctions.Tests
         [Fact]
         public void Should_Add_Other_Round_More_2()
         {
-            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteProviderToSecondLastRoundStrategy());
 
             _sut.AddRound(_providers);
 

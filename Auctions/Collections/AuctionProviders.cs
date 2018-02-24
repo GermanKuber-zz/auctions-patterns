@@ -18,7 +18,7 @@ namespace Auctions.Collections
         }
 
         public void Add(Provider provider) => _providers.Add(provider);
-        public IEnumerable<Provider> All() => _providers.ToList();
+        public ICollection<Provider> All() => _providers.ToList();
 
         public bool HasListOfProviders(IEnumerable<Provider> providers) =>
             _providers.All(x => providers.Any(s => s.Id == x.Id));
@@ -27,5 +27,7 @@ namespace Auctions.Collections
         {
             throw new NotImplementedException();
         }
+
+        public int Count() => _providers.Count();
     }
 }

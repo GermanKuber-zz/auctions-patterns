@@ -9,7 +9,7 @@ namespace Auctions.Domain.Interfaces
         IStatus AuctionStatus { get; set; }
         RoundPattern RoundPattern { get; }
         AuctionProviders Providers { get; }
-        Rounds Rounds { get; }
+        IRounds Rounds { get; }
         void AddProvider(Provider provider,
              ICheckWhatInviteStrategy checkWhatInviteStrategy,
              IInviteStrategy inviteStrategy);
