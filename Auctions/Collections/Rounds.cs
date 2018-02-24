@@ -25,9 +25,6 @@ namespace Auctions.Collections
                 inviteStrategy.Invite(_auction, provider);
 
         }
-
-
-
         public ICollection<Round> All() =>
             _rounds.ToList();
         public Round Last() =>

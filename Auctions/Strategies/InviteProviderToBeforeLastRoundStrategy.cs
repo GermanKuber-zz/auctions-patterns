@@ -2,7 +2,7 @@
 
 namespace Auctions.Domain.Interfaces
 {
-    public class InviteWonProviderInPreviousRound : IInviteStrategy
+    public class InviteProviderToBeforeLastRoundStrategy : IInviteStrategy
     {
         public void Invite(IHasRound hasRound, Provider provider)
         {
