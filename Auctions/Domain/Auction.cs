@@ -5,6 +5,7 @@ using Auctions.Collections;
 using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 using Auctions.Status;
+using Auctions.Status.UpdateStatus.Interfaces;
 using Optional;
 
 namespace Auctions.Domain
@@ -112,6 +113,7 @@ namespace Auctions.Domain
              IInviteStrategy inviteStrategy) => RoundPattern.AddProvider(provider, checkWhatInviteStrategy, inviteStrategy,
             p => Providers.Add(provider));
 
-
+        public void ChangeStatus(IAuctionUpdateStatusStrategy<IStatus> changeStatusStrategy) =>
+            changeStatusStrategy.Update((newStatus) => this.AuctionStatus = newStatus);
     }
 }

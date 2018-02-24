@@ -1,6 +1,7 @@
 ﻿using Auctions.Collections;
 using Auctions.Entities;
 using Auctions.Status;
+using Auctions.Status.UpdateStatus.Interfaces;
 
 namespace Auctions.Domain.Interfaces
 {
@@ -16,5 +17,6 @@ namespace Auctions.Domain.Interfaces
 
         void Do();
         void AddRound(AuctionProviders providers);
+        void ChangeStatus(IAuctionUpdateStatusStrategy<IStatus> changeStatusStrategy);
     }
 }

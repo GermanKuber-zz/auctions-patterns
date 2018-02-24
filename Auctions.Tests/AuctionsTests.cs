@@ -5,6 +5,8 @@ using Auctions.Collections;
 using Auctions.Context;
 using Auctions.Domain.Interfaces;
 using Auctions.Entities;
+using Auctions.Status;
+using Auctions.Status.UpdateStatus.Interfaces;
 using Xunit;
 
 namespace Auctions.Tests
@@ -68,5 +70,15 @@ namespace Auctions.Tests
 
             Assert.Equal(3, _sut.Rounds.All().First().Providers.All().Count());
         }
+
+        [Fact]
+        public void Should_Update_Status_To_Close()
+        {
+            IAuctionUpdateStatusStrategy<IStatus> closeStatusUpdate = new AuctionUpdateStatusClose(DateTime.Now);
+            _sut.ChangeStatus(closeStatusUpdate);
+            Assert.Equal(typeof(CloseStatus), _sut.AuctionStatus.GetType());
+        }
+
+
     }
 }
