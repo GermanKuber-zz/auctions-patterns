@@ -3,9 +3,7 @@ using Auctions.Domain;
 using Auctions.Domain.Interfaces;
 using Auctions.Entities;
 using Moq;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Auctions.Tests.Strategies
