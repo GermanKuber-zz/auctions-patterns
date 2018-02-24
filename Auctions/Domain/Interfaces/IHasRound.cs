@@ -6,6 +6,5 @@ namespace Auctions.Domain.Interfaces
     public interface IHasRound
     {
         Rounds Rounds { get; }
-        void AddProvider(Provider provider);
     }
 }

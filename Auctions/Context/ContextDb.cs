@@ -9,7 +9,7 @@ namespace Auctions.Context
         public DbSet<Auction> Auctions { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=TestDb;User Id=sa;Password=Password01!;");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-L51S99M;Initial Catalog=AuctionDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
     }
 }

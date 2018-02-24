@@ -13,12 +13,14 @@ namespace Auctions.Domain
         [NotMapped] private IStatus _auctionStatus;
 
         [NotMapped] public Rounds _rounds;
-        [NotMapped] public Rounds Rounds { 
+        [NotMapped]
+        public Rounds Rounds
+        {
             get
             {
                 if (RoundsC == null)
                     RoundsC = new List<Round>();
-                _rounds = new Rounds(RoundsC);
+                _rounds = new Rounds(this,RoundsC);
                 return _rounds;
             }
         }
@@ -35,7 +37,6 @@ namespace Auctions.Domain
                 return _providers;
             }
         }
-
 
         [NotMapped]
         public IStatus AuctionStatus
@@ -66,10 +67,13 @@ namespace Auctions.Domain
         {
             get
             {
-                if (_roundPattern == null && RoundsC != null && RoundsC.Count != 0)
-                    _roundPattern = new HasRounds(this);
-                else
-                    _roundPattern = new HasNotRounds();
+                if (_roundPattern == null)
+                {
+                    if (RoundsC != null && RoundsC.Count != 0)
+                        _roundPattern = new HasRounds(this);
+                    else
+                        _roundPattern = new HasNotRounds(this);
+                }
                 return _roundPattern;
             }
         }
@@ -78,10 +82,13 @@ namespace Auctions.Domain
             AuctionStatus.Do();
 
         public void AddRound(AuctionProviders providers) =>
-            _roundPattern=  _roundPattern.AddRoud(this,providers);
-        
-        
-        public void AddProvider(Provider provider) => RoundPattern.AddProvider(provider,
+            _roundPattern = _roundPattern.AddRoud(this, providers);
+
+        public void AddProvider(Provider provider,
+            ICheckWhatInviteStrategy checkWhatInviteStrategy,
+             IInviteStrategy inviteStrategy) => RoundPattern.AddProvider(provider, checkWhatInviteStrategy, inviteStrategy,
             p => Providers.Add(provider));
+
+
     }
 }

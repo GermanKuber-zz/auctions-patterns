@@ -8,17 +8,20 @@ namespace Auctions.Status
 {
     public class HasNotRounds : RoundPattern
     {
-        public HasNotRounds()
+        private readonly IHasRound _objectWithRouds;
+
+        public HasNotRounds(IHasRound objectWithRouds)
         {
+            _objectWithRouds = objectWithRouds;
         }
 
-        public void AddProvider(Provider provider, Action<Provider> callBackIfNotHas) =>
-            callBackIfNotHas(provider);
+        public void AddProvider(Provider provider, ICheckWhatInviteStrategy checkWhatInviteStrategy,
+            IInviteStrategy inviteStrategy, Action<Provider> callBackIfNotHas) => callBackIfNotHas(provider);
 
         public RoundPattern AddRoud(Auction auction, AuctionProviders providers)
         {
             var newRound = new HasRounds(auction);
-            return newRound.AddRoud(auction,providers);
+            return newRound.AddRoud(auction, providers);
         }
     }
 }

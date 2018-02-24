@@ -21,7 +21,7 @@ namespace Auctions.Collections
         }
         public void Add(Provider provider)
         {
-            throw new NotImplementedException();
+            _providers.Add(provider);
         }
 
         public bool HasListOfProviders(IEnumerable<Provider> providers)

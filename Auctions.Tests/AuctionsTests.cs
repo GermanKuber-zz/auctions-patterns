@@ -11,56 +11,62 @@ namespace Auctions.Tests
 {
     public class AuctionsTests
     {
+        private Provider _provider1 = new Provider { Id = 1 };
+        private Provider _provider2 = new Provider { Id = 2 };
+        private Provider _provider3 = new Provider { Id = 3 };
+        private List<Provider> _completeListOfProvices;
+        private AuctionProviders _providers;
+
+        IAuction _sut;
+        public AuctionsTests()
+        {
+            _sut = AuctionFactory.Create();
+            _completeListOfProvices = new List<Provider> { _provider1, _provider2, _provider3 };
+            _providers = new AuctionProviders(_completeListOfProvices);
+            _sut.AddProvider(_provider1, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+
+        }
         [Fact]
         public void Should_Add_New_Round()
         {
-            var context = new ContextDb();
-            IAuction auctionFirst = context.Auctions.FirstOrDefault();
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
 
+            _sut.AddRound(_providers);
 
-            var listOf = new List<Provider> {new Provider {Id = 1}, new Provider {Id = 2}};
-            var providers = new AuctionProviders(listOf);
-            auctionFirst.AddProvider(listOf.First());
-            auctionFirst.AddProvider(listOf[1]);
-
-            auctionFirst.AddRound(providers);
-
-            Assert.Equal(auctionFirst.Rounds.All().Count(), 1);
+            Assert.Single(_sut.Rounds.All());
         }
-        
+
         [Fact]
         public void Should_Add_New_Round_With_Two_Providers()
         {
-            var context = new ContextDb();
-            IAuction auctionFirst = context.Auctions.FirstOrDefault();
+            var providers = new AuctionProviders(new List<Provider> { _provider1, _provider2 });
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
 
+            _sut.AddRound(providers);
 
-            var listOf = new List<Provider> {new Provider {Id = 1}, new Provider {Id = 2}};
-            var providers = new AuctionProviders(listOf);
-            auctionFirst.AddProvider(listOf.First());
-            auctionFirst.AddProvider(listOf[1]);
-
-            auctionFirst.AddRound(providers);
-
-            Assert.Equal(auctionFirst.Rounds.All().First().Providers.All().Count(), 2);
+            Assert.Equal(2, _sut.Rounds.All().First().Providers.All().Count());
         }
-        
+
         [Fact]
         public void Should_Add_Other_Round_More()
         {
-            var context = new ContextDb();
-            IAuction auctionFirst = context.Auctions.FirstOrDefault();
+
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
+
+            _sut.AddRound(_providers);
+
+            Assert.Equal(3, _sut.Rounds.All().First().Providers.All().Count());
+        }
 
 
-            var listOf = new List<Provider> {new Provider {Id = 1}, new Provider {Id = 2}};
-            var providers = new AuctionProviders(listOf);
-            auctionFirst.AddProvider(listOf.First());
-            auctionFirst.AddProvider(listOf[1]);
+        [Fact]
+        public void Should_Add_Other_Round_More_2()
+        {
+            _sut.AddProvider(_provider2, new CheckWhatInviteStrategy(), new InviteWonProviderInPreviousRound());
 
-            auctionFirst.AddRound(providers);
-            
+            _sut.AddRound(_providers);
 
-            Assert.Equal(auctionFirst.Rounds.All().First().Providers.All().Count(), 2);
+            Assert.Equal(3, _sut.Rounds.All().First().Providers.All().Count());
         }
     }
 }

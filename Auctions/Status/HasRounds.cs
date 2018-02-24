@@ -15,10 +15,10 @@ namespace Auctions.Status
             _objectWithRouds = objectWithRouds;
         }
 
-        public void AddProvider(Provider provider, Action<Provider> callBackIfNotHas) =>
-            _objectWithRouds.AddProvider(provider);
-
-      
+        public void AddProvider(Provider provider, ICheckWhatInviteStrategy checkWhatInviteStrategy, IInviteStrategy inviteStrategy
+            , Action<Provider> callBackIfNotHas) =>
+            _objectWithRouds.Rounds.AddProvider(provider, checkWhatInviteStrategy, inviteStrategy);
+     
 
         public RoundPattern AddRoud(Auction auction, AuctionProviders providers)
         {
