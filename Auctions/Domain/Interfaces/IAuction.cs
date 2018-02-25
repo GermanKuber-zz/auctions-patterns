@@ -17,6 +17,6 @@ namespace Auctions.Domain.Interfaces
 
         void Do();
         void AddRound(AuctionProviders providers);
-        void ChangeStatus(IAuctionUpdateStatusStrategy<IStatus> changeStatusStrategy);
+        void ChangeStatus(IAuctionUpdateStatusStrategy changeStatusStrategy);
     }
 }

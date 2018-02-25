@@ -74,7 +74,7 @@ namespace Auctions.Tests
         [Fact]
         public void Should_Update_Status_To_Close()
         {
-            IAuctionUpdateStatusStrategy<IStatus> closeStatusUpdate = new AuctionUpdateStatusClose(DateTime.Now);
+            IAuctionUpdateStatusStrategy closeStatusUpdate = new AuctionUpdateStatusClose(DateTime.Now);
             _sut.ChangeStatus(closeStatusUpdate);
             Assert.Equal(typeof(CloseStatus), _sut.AuctionStatus.GetType());
         }

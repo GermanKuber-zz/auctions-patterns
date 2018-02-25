@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Auctions.Domain;
+using System;
 
 namespace Auctions.Status.UpdateStatus.Interfaces
 {
-    public class AuctionUpdateStatusClose : IAuctionUpdateStatusStrategy<CloseStatus>
+    public class AuctionUpdateStatusClose : IAuctionUpdateStatusStrategy
     {
         private readonly DateTime _dateTimeToClose;
 
@@ -12,9 +13,9 @@ namespace Auctions.Status.UpdateStatus.Interfaces
         }
 
 
-        public void Update(Action<CloseStatus> updateStatusCallBack)
+        public void Update(Auction auction,Action<IStatus> updateStatusCallBack)
         {
-            updateStatusCallBack(new CloseStatus());
+            updateStatusCallBack(auction.AuctionStatus.Close());
         }
     }
 }

@@ -6,5 +6,7 @@ namespace Auctions.Status
     {
         AuctionStatusEnum Status { get; }
         void Do();
+        IStatus Open();
+        IStatus Close();
     }
 }

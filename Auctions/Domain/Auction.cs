@@ -83,22 +83,22 @@ namespace Auctions.Domain
 
         private Option<DateTime> _closedDate;
         [NotMapped]
-        public Option<DateTime> ClosedDates
+        new public Option<DateTime> ClosedDate
         {
             get
             {
 
                 if (_closedDate == null)
-                    if (this.ClosedDateC == null)
+                    if (this.ClosedDate == null)
                         _closedDate = Option.None<DateTime>();
                     else
-                        _closedDate = Option.Some<DateTime>(ClosedDateC);
+                        _closedDate = Option.Some<DateTime>(base.ClosedDate);
                 return _closedDate;
             }
             private set
             {
                 _closedDate = value;
-                ClosedDateC = value.ValueOr(DateTime.Now);
+                base.ClosedDate = value.ValueOr(DateTime.Now);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Auctions.Domain
              IInviteStrategy inviteStrategy) => RoundPattern.AddProvider(provider, checkWhatInviteStrategy, inviteStrategy,
             p => Providers.Add(provider));
 
-        public void ChangeStatus(IAuctionUpdateStatusStrategy<IStatus> changeStatusStrategy) =>
-            changeStatusStrategy.Update((newStatus) => this.AuctionStatus = newStatus);
+        public void ChangeStatus(IAuctionUpdateStatusStrategy changeStatusStrategy) =>
+            changeStatusStrategy.Update(this, (newStatus) => this.AuctionStatus = newStatus);
     }
 }

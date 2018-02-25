@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Auctions.Domain;
+using System;
 
 namespace Auctions.Status.UpdateStatus.Interfaces
 {
-    public class AuctionUpdateStatusOpen : IAuctionUpdateStatusStrategy<OpenStatus>
+    public class AuctionUpdateStatusOpen : IAuctionUpdateStatusStrategy
     {
-        public void Update(Action<OpenStatus> updateStatusCallBack)
+        public void Update(Auction auction, Action<IStatus> updateStatusCallBack)
         {
-            updateStatusCallBack(new OpenStatus());
+            updateStatusCallBack(auction.AuctionStatus.Open());
         }
     }
 }

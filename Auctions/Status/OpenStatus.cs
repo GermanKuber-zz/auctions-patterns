@@ -15,5 +15,9 @@ namespace Auctions.Status
         {
             Console.WriteLine("Estoy Abierto");
         }
+
+        public IStatus Open() => this;
+
+        public IStatus Close() => new CloseStatus();
     }
 }

@@ -12,7 +12,7 @@ namespace Auctions.Entities
         public AuctionStatusEnum Status { get; protected set; }
         public List<Round> RoundsC { get; protected set; }
         public List<Provider> ProvidersC { get; protected set; }
-        public DateTime ClosedDateC { get; protected set; }
+        public DateTime ClosedDate { get; protected set; }
 
     }
 
