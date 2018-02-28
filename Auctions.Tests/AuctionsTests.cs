@@ -78,6 +78,20 @@ namespace Auctions.Tests
             _sut.ChangeStatus(closeStatusUpdate);
             Assert.Equal(typeof(CloseStatus), _sut.AuctionStatus.GetType());
         }
+        [Fact]
+        public void Should_Add_Providers_Execute_Alert_Decorator()
+        {
+            IInviteStrategy closeStatusUpdate = new InviteProviderToSecondLastRoundStrategy();
+
+            DecoratorInviteStrategy docoratorAlert = new AlertDecoratorInviteStrategy();
+            _sut.AddRound(_providers);
+            docoratorAlert.SetStrategyToDecorator(closeStatusUpdate);
+            _sut.AddProvider(_provider3,  new CheckWhatInviteStrategy(), docoratorAlert);
+            Assert.Equal(typeof(CloseStatus), _sut.AuctionStatus.GetType());
+        }
+
+
+    
 
 
     }

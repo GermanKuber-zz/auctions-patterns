@@ -13,4 +13,24 @@ namespace Auctions.Domain.Interfaces
                 secondLast.Providers.Add(provider);
         }
     }
+
+    public class DecoratorInviteStrategy : IInviteStrategy
+    {
+        private  IInviteStrategy _strategy;
+        public void SetStrategyToDecorator(IInviteStrategy strategy) {
+            _strategy = strategy;
+        }
+        public virtual void Invite(IHasRound hasRound, Provider provider)
+        {
+            _strategy?.Invite(hasRound, provider);
+        }
+    }
+
+    public class AlertDecoratorInviteStrategy : DecoratorInviteStrategy
+    {
+        public override void Invite(IHasRound hasRound, Provider provider)
+        {
+            base.Invite(hasRound, provider);
+        }
+    }
 }

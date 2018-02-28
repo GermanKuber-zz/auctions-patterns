@@ -52,5 +52,6 @@ namespace Auctions.Tests.Strategies
 
             Assert.Equal(2, _round.Providers.All().Count);
         }
+
     }
 }
